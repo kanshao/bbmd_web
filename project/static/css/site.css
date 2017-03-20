@@ -1,0 +1,96 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Droid Sans', sans-serif;
+}
+
+.dropdown-header{
+  color: #3D82A3;
+  font-weight: bold;
+}
+
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+}
+#wrap > .container-fluid {
+  padding: 60px 15px 0;
+}
+
+
+/* HTML error context */
+.error {
+    background-color: #ECE3E3;
+    border: 2px solid rgb(153, 114, 114);
+    border-radius: 5px;
+    height: 100%;
+    padding: 30px;
+    text-align: center;
+}
+.error h1 {
+    font-size: 48px;
+    color: rgb(155, 126, 49);
+    text-align: center;
+}
+.error p {
+    font-weight: bold;
+    font-size: 1.3em;
+    font-family: monospace;
+}
+
+
+/* html5 number spinners */
+/*disable chrome*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/*disable firefox*/
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+
+/* about page */
+.ff {
+  padding-bottom: 7px;
+}
+.sponsor {
+  max-width: 100%;
+}
+
+
+/* Correlation Table */
+.corr-tbl {
+  width: 100%;
+  max-width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  text-align: center;
+}
+.corr-tbl th {
+  text-align: center;
+}
+.corr-tbl-cell {
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+.corr-tbl-diag {
+  background-color: #ddd;
+}
+.corr-tbl-th-top {
+  border-bottom: 3px solid #ddd;
+}
+.corr-tbl-th-left {
+  border-right: 3px solid #ddd;
+  text-align: right !important;
+  padding-right: 1em;
+}
+.corr-tbl-hovered {
+  background-color: rgba(235,143,25,0.2196078431372549);
+}

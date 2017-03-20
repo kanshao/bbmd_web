@@ -1,0 +1,11 @@
+*.log
+*.py[co]
+celerybeat-schedule
+project/django_project/settings/local.py
+tmux.sh
+public
+*celerybeat.pid
+project/node_modules/*
+project/assets/bundles*
+project/webpack-stats.json
+project/celery.sqlite

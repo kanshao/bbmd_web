@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Bayesian BMD{% endblock %}</title>
+    <link rel="icon" type="image/png" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta-description %}{% endblock %}">
+    <meta name="author" content="{% block meta-author %}{% endblock %}">
+    <meta name="keywords" content="{% block meta-keywords %}{% endblock %}">
+    {% block extra_meta %}{% endblock extra_meta %}
+    {% if not debug %}
+        <link rel='stylesheet' type='text/css'
+              href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css'>
+        <link rel="stylesheet" type="text/css"
+              href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css"
+              href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css">
+        <link rel="stylesheet" type="text/css"
+              href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+        <link rel="stylesheet" type="text/css"
+              href="//cdnjs.cloudflare.com/ajax/libs/bokeh/0.12.4/bokeh.min.css">
+    {% else %}
+        <link rel='stylesheet' type='text/css'
+              href='{{STATIC_URL}}lib/css/bootstrap.min.css'>
+        <link rel="stylesheet" type="text/css"
+              href="{{STATIC_URL}}lib/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css"
+              href="{{STATIC_URL}}lib/css/bootstrap-switch.min.css">
+        <link rel="stylesheet" type="text/css"
+              href="{{STATIC_URL}}lib/css/katex.min.css">
+        <link rel="stylesheet" type="text/css"
+              href="{{STATIC_URL}}lib/css/bokeh-0.12.4.min.css">
+    {% endif %}
+    <link rel="stylesheet" type="text/css" media="all" href="{{STATIC_URL}}css/site.css">
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+<body id="{% block body_id %}{% endblock body_id %}" class="{% block body_class %}{% endblock body_class %}">
+    <div id='wrap'>
+        {% block masthead %}{% endblock masthead %}
+
+        {% block navigation %}
+            {% include "includes/navigation.html" %}
+        {% endblock navigation %}
+
+        {% block content-outer %}
+        <div id="content" class="container-fluid">
+            <div class="row">
+                {% block messages-outer %}
+                <div id="messages" class="col-md-10 col-md-offset-1">
+                    {% block messages %}
+                    {% for msg in messages %}
+                        {% include "includes/message.html" with msg=msg %}
+                    {% endfor %}
+                    {% endblock messages %}
+                </div>
+                {% endblock messages-outer %}
+            </div>
+
+            {% block content %}
+                <div id="mainContent" class="container">
+                    {% block mid_content %}{% endblock mid_content %}
+                </div>
+            {% endblock content %}
+
+        </div>
+        {% endblock content-outer %}
+    </div>
+
+    {% block js %}
+    {% if not debug %}
+    <script charset="utf-8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+    <script charset="utf-8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script charset="utf-8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script charset="utf-8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script charset="utf-8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.min.js"></script>
+    <script charset="utf-8"
+            src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script charset="utf-8"
+            src="//cdnjs.cloudflare.com/ajax/libs/bokeh/0.12.4/bokeh.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//google-analytics.com/analytics.js','ga');
+      ga('create', '{{GA_TRACKING_ID}}', '{{GA_SITE}}');
+      ga('send', 'pageview');
+    </script>
+    {% else %}
+    <script charset="utf-8"
+            src="{{ STATIC_URL}}js/lib/handlebars.min.js"></script>
+    <script charset="utf-8"
+            src="{{ STATIC_URL}}js/lib/jquery.min.js"></script>
+    <script charset="utf-8"
+            src="{{ STATIC_URL}}js/lib/bootstrap.min.js"></script>
+    <script charset="utf-8"
+            src="{{ STATIC_URL}}js/lib/underscore-min.js"></script>
+    <script charset="utf-8"
+            src="{{ STATIC_URL}}js/lib/bootstrap-switch.min.js"></script>
+    <script charset="utf-8"
+            src="{{ STATIC_URL}}js/lib/katex.min.js"></script>
+    <script charset="utf-8"
+            src="{{ STATIC_URL}}js/lib/bokeh-0.12.4.min.js"></script>
+    {% endif %}
+    {% endblock js %}
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

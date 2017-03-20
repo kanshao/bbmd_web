@@ -1,0 +1,9 @@
+-r base.txt
+
+django-debug-toolbar==1.7
+django-extensions==1.7.7
+sqlalchemy==1.1.6
+
+# Mac/OSX only
+bpython==0.16.0
+watchdog==0.8.3

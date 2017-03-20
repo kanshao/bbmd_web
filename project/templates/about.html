@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %} About | benchmarkdose.com {% endblock %}
+
+{% block mid_content %}
+<div class="col-md-8">
+    <h1>About this site</h1>
+    <p>
+        Bayesian BMD (BBMD) is a web-based benchmark dose (BMD) analysis
+        system featuring the <a href='http://mc-stan.org/interfaces/pystan.html'>PyStan</a> library for Markov Chain Monte Carlo simulation. The system is capable
+        of using common dichotomous and continuous dose-response models to
+        estimate the BMD for various individual dose-response models and
+        model-averaged BMD.
+    </p>
+
+    <p>
+        The Principal Investigator (PI) of this project is
+        <a href='http://pages.iu.edu/~kshao/'>Dr. Kan Shao</a> who is
+        responsible for the scientific methodology employed
+        in the system and supervising the entire project. The lead software
+        developer of the project is
+        <a href="https://github.com/shapiromatron">Andy Shapiro</a>.
+    </p>
+
+    <p>
+        <a href="{{STATIC_URL}}docs/SOT2016_poster.pdf">View</a>
+        the 2016 Society of Toxicology poster.
+        <a href="{{STATIC_URL}}docs/SOT2016_poster.pdf">
+              <img class="ff" src="{{STATIC_URL}}/img/pdf_icon.png"
+                 alt="PDF file-format"></a>
+    </p>
+
+    <p>
+        <a href="{{STATIC_URL}}docs/SRA2015_poster.pdf">View</a>
+        the 2015 Society for Risk Analysis poster.
+        <a href="{{STATIC_URL}}docs/SRA2015_poster.pdf">
+              <img class="ff" src="{{STATIC_URL}}/img/pdf_icon.png"
+                 alt="PDF file-format"></a>
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+        For questions or suggestions, please contact:
+    </p>
+    <address>
+        <strong>Kan Shao</strong><br>
+        Email: <a href="mailto:kshao@indiana.edu">kshao@indiana.edu</a><br>
+        Phone: (812) 856-2725
+    </address>
+
+    <h2>Support</h2>
+    <p>
+        The project is currently supported by the Indiana University School of
+        Public Health Developmental Grant for Pre-Tenure Faculty.
+    </p>
+
+    <div class='row'>
+            <div class="col-xs-offset-2 col-xs-8">
+                <a href="http://www.publichealth.indiana.edu/" target='_blank'>
+                    <img class='sponsor' src="{{STATIC_URL}}img/SPH_logo.jpg" alt="IU SPH logo">
+                </a>
+            </div>
+        </div>
+
+</div>
+{% endblock %}

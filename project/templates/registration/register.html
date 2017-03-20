@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}{{block.super}}: Create account{% endblock %}
+
+
+{% block mid_content %}
+  <div class='row-fluid'>
+    <div class="col-md-8 col-md-offset-2">
+      {% crispy form %}
+    </div>
+  </div>
+{% endblock mid_content %}
+
+
+{% block extra_js %}
+  <script type="text/javascript">
+    document.getElementById('id_email').focus();
+  </script>
+{% endblock extra_js %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block mid_content %}
+
+    {% if not user.is_authenticated %}
+        <h1>Bayesian BMD analysis</h1>
+        <p class="help-text">
+            Welcome to the website. To begin an analysis or view your previous
+            analyses, please log-in.
+            <br>
+
+            <form action='.' method='post'>
+                <h4>Want to try the software before creating an account?</h4>
+                {% csrf_token %}
+                <button type='submit' class='btn btn-primary'>Login using test-account</button>
+                <p class='help-block'>Feel free to explore; the account is reset (i.e., all results are deleted) every morning.</p>
+            </form>
+
+        </p>
+    {% else %}
+
+        <h1>Your runs
+            {%if isTestAccount %} (test account) {% endif %}
+            <a href="{% url 'bbmd:run_create' %}"
+               class="btn btn-primary pull-right"
+               title="Create a new run">
+                    <i class="fa fa-plus"></i>&nbsp;New run</a>
+        </h1>
+
+        {%if isTestAccount %}
+        <div class='alert alert-danger'>
+            <p>
+                <strong>This is a test account.</strong><br>
+                Results will be deleted from this account every 24 hours. Feel
+                free to explore, but in order to save your results, please
+                <a href="{% url 'user:register' %}">register</a>.
+            </p>
+        </div>
+        {% endif %}
+
+        {% if object_list.count == 0 %}
+        <p class='help-block'>
+            You have no existing runs- <a href="{% url 'bbmd:run_create' %}">create one!</a>
+        </p>
+        {% else %}
+        <table class="table table-condensed table-striped">
+            <colgroup>
+                <col width="25%"></col>
+                <col width="15%"></col>
+                <col width="11%"></col>
+                <col width="11%"></col>
+                <col width="15%"></col>
+                <col width="15%"></col>
+                <col width="8%"></col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Data type</th>
+                    <th>Number of models</th>
+                    <th>Number of BMD estimates</th>
+                    <th>Date created</th>
+                    <th>Last updated</th>
+                    <th>Public?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+                    <td><a href="{{object.get_absolute_url}}">{{object.name}}</a></td>
+                    <td>{{object.get_data_type_display}}</td>
+                    <td>{{object.models.count}}</td>
+                    <td>{{object.bmds.count}}</td>
+                    <td>{{object.created|date:"SHORT_DATE_FORMAT" }} {{object.created|time:"g:i A" }}</td>
+                    <td>{{object.last_updated|date:"SHORT_DATE_FORMAT" }} {{object.last_updated|time:"g:i A" }}</td>
+                    <td>{{object.public}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
