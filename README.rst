@@ -23,6 +23,8 @@ tools such as the US EPA Benchmark Dose Modeling Software (`BMDS`_) is
 documented in a peer-reviewed publication coming soon [submitted; reference
 coming soon].
 
+.. _`BMDS`: https://www.epa.gov/bmds
+
 For more details on BBMD including installation/developer documentation,
 see the `documentation`_ section of the github repository. The computation
 portion of this web application is available in the companion `bbmd`_ repository.
