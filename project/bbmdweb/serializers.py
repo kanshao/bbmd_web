@@ -29,6 +29,8 @@ class RunSerializer(serializers.ModelSerializer):
         source='get_variance_type_display', read_only=True)
     bmr_ranges = serializers.JSONField(
         source='get_bmr_bounding_ranges', read_only=True)
+    has_dataset = serializers.BooleanField(
+        read_only=True)
 
     def validate_data(self, data):
         data_type = data.get('data_type')

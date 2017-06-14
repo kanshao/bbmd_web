@@ -27,7 +27,8 @@ class Header extends React.Component {
 
     renderReadModeActions(){
         let object = this.props.object,
-            actions = [];
+            actions = [],
+            reports = [];
 
         if (this.props.hasChangeActions){
             actions.push.apply(actions, [
@@ -36,33 +37,37 @@ class Header extends React.Component {
                     <i className="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>&nbsp;Update</a></li>,
                 <li key={20}><a href={object.url_delete}>
                     <i className="fa fa-trash fa-fw" aria-hidden="true"></i>&nbsp;Delete</a></li>,
-                <li className="divider" role="separator" key={5}></li>,
             ]);
         }
 
-        actions.push.apply(actions, [
-            <li className="dropdown-header" key={0}>Reports</li>,
-            <li key={25}>
-                <a href={object.url_docx}>
-                    <i className="fa fa-file-word-o fa-fw" aria-hidden="true"></i>&nbsp;Download report</a>
-            </li>,
-            <li key={30}>
-                <a href={object.url_parameters}>
-                    <i className="fa fa-file-excel-o fa-fw" aria-hidden="true"></i>&nbsp;Download parameters</a>
-            </li>,
-            <li key={35}>
-                <a href={object.url_bmds}>
-                    <i className="fa fa-file-excel-o fa-fw" aria-hidden="true"></i>&nbsp;Download BMDs</a>
-            </li>,
-            <li key={40}>
-                <a href={object.url_summary_txt}>
-                    <i className="fa fa-file-text-o fa-fw" aria-hidden="true"></i>&nbsp;Download summary (text)</a>
-            </li>,
-            <li key={45}>
-                <a href={object.url_summary_json}>
-                    <i className="fa fa-file-code-o fa-fw" aria-hidden="true"></i>&nbsp;Download summary (JSON)</a>
-            </li>,
-        ]);
+        if (object.has_dataset){
+            reports = [
+                <li className="divider" role="separator" key={5}></li>,
+                <li className="dropdown-header" key={0}>Reports</li>,
+                <li key={25}>
+                    <a href={object.url_docx}>
+                        <i className="fa fa-file-word-o fa-fw" aria-hidden="true"></i>&nbsp;Download report</a>
+                </li>,
+                <li key={30}>
+                    <a href={object.url_parameters}>
+                        <i className="fa fa-file-excel-o fa-fw" aria-hidden="true"></i>&nbsp;Download parameters</a>
+                </li>,
+                <li key={35}>
+                    <a href={object.url_bmds}>
+                        <i className="fa fa-file-excel-o fa-fw" aria-hidden="true"></i>&nbsp;Download BMDs</a>
+                </li>,
+                <li key={40}>
+                    <a href={object.url_summary_txt}>
+                        <i className="fa fa-file-text-o fa-fw" aria-hidden="true"></i>&nbsp;Download summary (text)</a>
+                </li>,
+                <li key={45}>
+                    <a href={object.url_summary_json}>
+                        <i className="fa fa-file-code-o fa-fw" aria-hidden="true"></i>&nbsp;Download summary (JSON)</a>
+                </li>,
+            ]
+        }
+
+        actions.push.apply(actions, reports);
 
         return (
             <div className='btn-group pull-right'>

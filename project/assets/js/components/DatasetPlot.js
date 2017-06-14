@@ -14,7 +14,7 @@ class DatasetPlot extends React.Component {
 
     componentDidUpdate(){
         const { run } = this.props;
-        if (!_.isUndefined(run.plot_json))
+        if (!_.isUndefined(run.plot_json) && run.has_dataset)
             h.renderBokeh(this.refs.plotHolder, run.plot_json);
     }
 

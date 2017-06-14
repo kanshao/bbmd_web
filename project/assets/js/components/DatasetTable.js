@@ -105,6 +105,9 @@ class DatasetTable extends React.Component {
 
     render(){
         var run = this.props.run;
+        if (!run.has_dataset){
+            return <p className='help-block'>No dataset is available.</p>
+        }
         return (
             <table className='table table-condensed table-striped'>
                 {this.renderHeader(run)}

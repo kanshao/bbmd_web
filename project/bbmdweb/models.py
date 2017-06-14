@@ -186,6 +186,10 @@ class Run(models.Model):
             name=name,
             seed=randint(0, 99999))
 
+    @property
+    def has_dataset(self):
+        return not np.isnan(self.np_doses).any()
+
     def create_dr_session(self, dataset=True, models=False, bmrs=False):
         # create session
         session = Session(
